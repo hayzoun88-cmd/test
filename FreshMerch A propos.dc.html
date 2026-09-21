@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#020711;color:#fff;font-family:"DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}a:hover{color:#ffed00}*{box-sizing:border-box}</style>
+</helmet>
+<div data-screen-label="À propos" style="background:#020711;color:#fff;font-family:'DM Sans',system-ui,sans-serif;font-size:17px;line-height:1.65;overflow-x:clip">
+  <dc-import name="SiteHeader" hint-size="100%,70px"></dc-import>
+
+  <section data-reveal style="position:relative;overflow:hidden;background:radial-gradient(circle at 75% 20%,rgba(47,124,255,.18),transparent 40%),linear-gradient(90deg,#020711 0%,#071225 60%,#020711 100%)">
+    <div style="max-width:1240px;margin:0 auto;padding:110px 24px 90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;align-items:end">
+      <div style="max-width:640px">
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>À PROPOS</span>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(44px,6.4vw,84px);line-height:.94;letter-spacing:-.05em;margin:22px 0 22px;text-wrap:balance">Une équipe qui pense <em style="font-style:normal;color:#ffed00">textile et sport.</em></h1>
+        <p style="color:#aab6ca;font-size:19px;line-height:1.7;margin:0;max-width:560px;text-wrap:pretty">FreshMerch accompagne clubs, entreprises, associations et événements dans la création de leur identité textile — du premier croquis à la pièce livrée.</p>
+      </div>
+      <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/3"><img src="assets/sports-photos/rugby.jpg" alt="Équipe de rugby fauteuil en action" style="width:100%;height:100%;object-fit:cover"></div>
+    </div>
+  </section>
+
+  <section data-reveal style="padding:100px 24px;background:#f4f6f8;color:#071225">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:56px;align-items:start">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#647087"><i style="width:28px;height:1px;background:#2f7cff"></i>01 / NOTRE HISTOIRE</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 0">Née d'une envie<br><em style="font-style:normal;color:#2f7cff">simple.</em></h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;font-size:18px;line-height:1.75;color:#3c4a63;text-wrap:pretty">
+        <p style="margin:0;font-size:22px;color:#071225;font-weight:500">Rendre le textile personnalisé accessible, rapide et fidèle à l'identité de chaque projet.</p>
+        <p style="margin:0">FreshMerch est parti d'un constat partagé par beaucoup de clubs et d'entreprises : commander des textiles personnalisés est souvent long, flou sur les délais et décevant sur le rendu final.</p>
+        <p style="margin:0">Nous avons construit notre atelier autour de trois priorités — la clarté du process, la qualité de fabrication et la réactivité de l'équipe. Petite association ou entreprise multi-sites, l'objectif reste le même : un textile qui vous ressemble, livré dans les temps.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal style="padding:100px 24px;background:#071225">
+    <div style="max-width:1240px;margin:0 auto">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:48px">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>02 / NOS VALEURS</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 0">Ce qui guide<br><em style="font-style:normal;color:#ffed00">chaque projet.</em></h2>
+        </div>
+        <p style="max-width:380px;color:#98a6bc;font-size:17px;margin:0">Trois principes appliqués à chaque commande, petite ou grande.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+          <article style="border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:32px 28px;background:#020711;display:flex;flex-direction:column;gap:12px">
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;color:#ffed00;letter-spacing:.1em">{{ v.n }}</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;margin:0;letter-spacing:-.03em">{{ v.title }}</h3>
+            <p style="margin:0;color:#98a6bc;font-size:16px;line-height:1.6;text-wrap:pretty">{{ v.text }}</p>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal style="padding:100px 24px;background:#020711">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:64px">
+      <div style="position:sticky;top:110px;align-self:start">
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>03 / NOTRE MÉTHODE</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 22px">Comment nous<br><em style="font-style:normal;color:#ffed00">travaillons.</em></h2>
+        <p style="max-width:380px;color:#98a6bc;font-size:17px;margin:0">Un process pensé pour rester simple, même sur les projets complexes.</p>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.13)">
+        <sc-for list="{{ method }}" as="m" hint-placeholder-count="4">
+          <article style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:18px;align-items:start;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.13)">
+            <span style="font-size:12px;color:#98a6bc;letter-spacing:.1em;padding-top:8px">{{ m.n }}</span>
+            <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:26px;letter-spacing:-.02em;margin:0 0 8px;line-height:1.1">{{ m.title }}</h3><p style="margin:0;color:#98a6bc;font-size:16px;line-height:1.65;max-width:560px;text-wrap:pretty">{{ m.text }}</p></div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+    <dc-import name="SiteFooter" credits="{{ true }}" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { import("./site.js").then(m => m.initReveal(document)); }
+  renderVals() {
+    return {
+      values: [
+        { n: "01", title: "Transparence", text: "Un devis clair, un délai annoncé et respecté, aucune surprise à la livraison." },
+        { n: "02", title: "Exigence", text: "Chaque pièce est contrôlée avant expédition : matière, coupe, marquage." },
+        { n: "03", title: "Proximité", text: "Un interlocuteur unique du premier échange jusqu'au retour terrain de vos équipes." }
+      ],
+      method: [
+        { n: "01", title: "Échange initial", text: "Nous cadrons le besoin : type de textile, quantité, délai, budget et identité visuelle." },
+        { n: "02", title: "Proposition & design", text: "Nous vous soumettons une direction visuelle et un devis détaillé pour validation." },
+        { n: "03", title: "Production", text: "Flocage, broderie ou sublimation selon la technique la plus adaptée à votre projet." },
+        { n: "04", title: "Contrôle & livraison", text: "Chaque pièce est vérifiée avant expédition, avec suivi jusqu'à réception." }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

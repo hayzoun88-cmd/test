@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#020711;color:#fff;font-family:"DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{color:#ffed00}
+*{box-sizing:border-box}
+@keyframes fmFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes fmPulse{0%{box-shadow:0 0 0 0 rgba(255,237,0,.55)}60%{box-shadow:0 0 0 10px rgba(255,237,0,0)}100%{box-shadow:0 0 0 0 rgba(255,237,0,0)}}
+@keyframes fmShine{0%,55%{left:-40%}85%,100%{left:120%}}
+@keyframes fmJersey{0%,100%{transform:translateY(0) rotateY(-7deg) rotateZ(-.6deg)}50%{transform:translateY(-16px) rotateY(7deg) rotateZ(.6deg)}}
+@keyframes fmHalo{0%,100%{transform:rotateX(66deg) rotateZ(0) scale(1);opacity:.9}50%{transform:rotateX(66deg) rotateZ(180deg) scale(1.04);opacity:1}}
+@keyframes fmFloor{0%,100%{transform:scaleX(1);opacity:.8}50%{transform:scaleX(.82);opacity:.5}}
+@keyframes fmMarquee{from{transform:translateX(0)}to{transform:translateX(-33.3333%)}}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.45)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+/* ---- MOBILE ---- */
+@media (max-width:860px){
+  #top [data-m="nav"],#top [data-m="headercta"]{display:none!important}
+  #top [data-m="burger"]{display:inline-flex!important}
+  #top header{padding:10px 16px!important}
+  #top [style*="padding: 110px 24px"],#top [style*="padding: 100px 24px"],#top [style*="padding: 110px 24px 90px"],#top [style*="padding: 110px 24px 60px"],#top [style*="padding: 80px 24px 100px"],#top [style*="padding: 110px 24px 80px"]{padding:64px 20px!important}
+  #top [style*="padding: 72px 24px 40px"]{padding:40px 20px 16px!important}
+  #top [style*="position: sticky"]:not(header){position:static!important;top:auto!important}
+  #top [style*="min-height: 420px"]{min-height:300px!important}
+  #top [style*="grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr)"]{grid-template-columns:1fr!important}
+  #top aside[aria-hidden="true"]{display:none!important}
+  #top [style*="gap: 64px"]{gap:36px!important}
+  #top footer{padding:48px 20px 20px!important}
+}
+@media (max-width:520px){
+  #top{font-size:16px!important}
+  #top [style*="font-size: clamp(52px, 7vw, 104px)"]{font-size:clamp(40px,12vw,56px)!important}
+  #top [style*="font-size: clamp(44px, 6.4vw, 84px)"],#top [style*="font-size: clamp(44px, 6.5vw, 92px)"]{font-size:clamp(36px,11vw,48px)!important}
+  #top [style*="font-size: clamp(40px, 5.5vw, 76px)"]{font-size:clamp(32px,10vw,44px)!important}
+  #top [style*="font-size: 19px"],#top [style*="font-size: 18px"]{font-size:16px!important}
+  #top [style*="display: flex; gap: 12px; flex-wrap: wrap"] > a,#top [style*="display: flex; gap: 12px; flex-wrap: wrap"] > button{width:100%!important;justify-content:center!important}
+  #top [style*="gap: 36px; margin-top: 44px"]{gap:18px 24px!important;margin-top:28px!important}
+  #top [style*="min-height: 300px"]{min-height:240px!important}
+  #top [style*="padding: 54px 48px"]{padding:32px 24px!important}
+  #top [style*="aspect-ratio: 4 / 5"]{aspect-ratio:1!important}
+  #top [data-m="burger"] ~ *{margin-left:0}
+}
+
+/* ---- MODE CLAIR : remappe les couleurs inline (sérialisées en rgb par le navigateur) ---- */
+html[data-theme="light"] body{background:#f4f6f8;color:#0c1526}
+html[data-theme="light"] #top{background:#f4f6f8!important;color:#0c1526!important}
+html[data-theme="light"] #top [style*="background: rgb(2, 7, 17)"],html[data-theme="light"] #top [style*="background-color: rgb(2, 7, 17)"],html[data-theme="light"] #top [style*="linear-gradient(90deg, rgb(2, 7, 17)"]{background:#f4f6f8!important}
+html[data-theme="light"] #top [style*="background: rgb(7, 18, 37)"],html[data-theme="light"] #top [style*="background-color: rgb(7, 18, 37)"]{background:#e9edf4!important}
+html[data-theme="light"] #top [style*="rgba(2, 7, 17, 0.72)"]{background:rgba(244,246,248,.82)!important;border-bottom-color:rgba(12,21,38,.1)!important}
+html[data-theme="light"] #top [style*="radial-gradient(circle at 50% 40%, rgb(13, 42, 78)"],html[data-theme="light"] #top [style*="radial-gradient(circle at 50% 42%, rgb(13, 42, 78)"]{background:radial-gradient(circle at 50% 40%,#dfe6f2,#f4f6f8 70%)!important}
+html[data-theme="light"] #top [style*="color: rgb(255, 255, 255)"],html[data-theme="light"] #top [style*="color: rgb(255, 244, 92)"]{color:#0c1526!important}
+html[data-theme="light"] #top [style*="color: rgb(170, 182, 202)"],html[data-theme="light"] #top [style*="color: rgb(152, 166, 188)"],html[data-theme="light"] #top [style*="color: rgb(195, 205, 219)"],html[data-theme="light"] #top [style*="color: rgb(219, 228, 247)"],html[data-theme="light"] #top [style*="color: rgb(174, 185, 201)"],html[data-theme="light"] #top [style*="color: rgb(108, 120, 145)"]{color:#4a5872!important}
+html[data-theme="light"] #top [style*="color: rgb(255, 237, 0)"]{color:#c76a00!important}
+html[data-theme="light"] #top [style*="color: rgb(255, 245, 207)"]{color:#2b5d2f!important}
+html[data-theme="light"] #top [style*="rgba(255, 255, 255, 0.28)"],html[data-theme="light"] #top [style*="rgba(255, 255, 255, 0.3)"]{border-color:rgba(12,21,38,.3)!important;background-color:#fff!important}
+html[data-theme="light"] #top [style*="rgba(255, 255, 255, 0.13)"],html[data-theme="light"] #top [style*="rgba(255, 255, 255, 0.08)"],html[data-theme="light"] #top [style*="rgba(255, 255, 255, 0.1)"],html[data-theme="light"] #top [style*="rgba(255, 255, 255, 0.18)"]{border-color:rgba(12,21,38,.14)!important}
+html[data-theme="light"] #top [style*="background: rgb(7, 18, 37)"][style*="border"]{background:#fff!important}
+html[data-theme="light"] #top input,html[data-theme="light"] #top textarea{color:#0c1526!important}
+html[data-theme="light"] #top input::placeholder,html[data-theme="light"] #top textarea::placeholder{color:#7b869b}
+html[data-theme="light"] #top [style*="background: rgb(255, 237, 0)"]{color:#101827!important}
+html[data-theme="light"] #top [style*="background: rgb(7, 18, 37)"][style*="color: rgb(255, 237, 0)"]{background:#0c1526!important;color:#ffed00!important}
+html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"] #top img[src*="hoodie-cutout"]{filter:drop-shadow(0 30px 34px rgba(12,21,38,.28))!important}
+</style>
+</helmet>
+<div id="top" style="background:#020711;color:#fff;font-family:'DM Sans',system-ui,sans-serif;font-size:17px;line-height:1.65;overflow-x:clip">
+  <sc-if value="{{ showIntro }}" hint-placeholder-val="{{ true }}">
+  <div role="dialog" aria-modal="true" aria-label="Vidéo de présentation FreshMerch" style="position:fixed;inset:0;z-index:500;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden">
+    <video autoPlay="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" onEnded="{{ skipIntro }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <source src="assets/intro.mp4" type="video/mp4">
+    </video>
+    <img src="assets/freshmerch-logo.png" alt="FreshMerch" style="position:absolute;top:20px;left:20px;height:34px;width:auto;z-index:2;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))">
+    <button type="button" onClick="{{ skipIntro }}" style="position:absolute;bottom:28px;right:28px;z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;border:1px solid #ffed00;background:rgba(2,7,17,.55);backdrop-filter:blur(8px);color:#ffed00;font:inherit;font-size:13px;font-weight:700;letter-spacing:.02em;cursor:pointer" style-hover="background:rgba(255,237,0,.12)">Passer la vidéo <span aria-hidden="true">→</span></button>
+  </div>
+  </sc-if>
+  <header style="position:sticky;top:0;z-index:50;padding:14px 24px;background:rgba(2,7,17,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:28px">
+      <a href="#accueil" aria-label="FreshMerch — accueil" style="display:flex;flex-shrink:0"><img src="assets/freshmerch-logo.png" alt="FreshMerch" style="height:34px;width:auto;display:block"></a>
+      <nav data-m="nav" aria-label="Navigation principale" style="display:flex;gap:26px;margin:0 auto;font-size:14px;font-weight:500;color:#aab6ca;flex-wrap:wrap;justify-content:center">
+        <a href="#accueil" style="white-space:nowrap" style-hover="color:#fff">Accueil</a>
+        <a href="#sport" style="white-space:nowrap" style-hover="color:#fff">Sports</a>
+        <a href="#textile" style="white-space:nowrap" style-hover="color:#fff">Textile</a>
+        <a href="studio.html" style="white-space:nowrap" style-hover="color:#fff">Studio</a>
+        <a href="#a-propos" style="white-space:nowrap" style-hover="color:#fff">À propos</a>
+      </nav>
+      <button type="button" onClick="{{ toggleTheme }}" aria-pressed="{{ isLight }}" aria-label="{{ themeAria }}" style="display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;cursor:pointer;white-space:nowrap;flex-shrink:0" style-hover="border-color:#ffed00"><span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:#ffed00;box-shadow:0 0 0 3px rgba(255,237,0,.25);flex-shrink:0"></span>{{ themeLabel }}</button>
+      <a data-m="headercta" href="#devis" style="position:relative;display:inline-flex;align-items:center;gap:10px;min-height:42px;padding:0 18px;border-radius:999px;background:#ffed00;color:#101827;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0;overflow:hidden;box-shadow:0 0 0 0 rgba(255,237,0,.55);animation:fmPulse 2.8s ease-out infinite;transition:transform .25s cubic-bezier(.2,.75,.2,1),box-shadow .25s" style-hover="background:#fff45c;color:#101827;transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,237,0,.35)"><span aria-hidden="true" style="position:absolute;top:0;bottom:0;left:-40%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:fmShine 2.8s ease-in-out infinite"></span><span style="position:relative">Demander un devis</span> <span aria-hidden="true" style="position:relative;display:inline-block;transition:transform .25s cubic-bezier(.2,.75,.2,1)">↗</span></a>
+      <button data-m="burger" type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="{{ menuAria }}" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;cursor:pointer;flex-shrink:0;margin-left:auto"><span aria-hidden="true" style="display:flex;flex-direction:column;gap:5px"><i style="display:block;width:20px;height:2px;background:currentColor;border-radius:2px"></i><i style="display:block;width:20px;height:2px;background:currentColor;border-radius:2px"></i></span></button>
+    </div>
+  </header>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-m="menu" role="dialog" aria-label="Menu" style="position:fixed;inset:0;z-index:60;background:#020711;display:flex;flex-direction:column;padding:20px 24px 32px;overflow:auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <img src="assets/freshmerch-logo.png" alt="FreshMerch" style="height:30px;width:auto">
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Fermer le menu" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font:inherit;font-size:20px;cursor:pointer">✕</button>
+    </div>
+    <nav aria-label="Navigation mobile" style="display:flex;flex-direction:column;margin:auto 0;padding:32px 0">
+      <a href="#accueil" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.13);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,9vw,44px);letter-spacing:-.04em;color:#fff">Accueil<span style="font:13px 'DM Sans',sans-serif;color:#98a6bc">01</span></a>
+      <a href="#sport" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.13);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,9vw,44px);letter-spacing:-.04em;color:#fff">Sports<span style="font:13px 'DM Sans',sans-serif;color:#98a6bc">02</span></a>
+      <a href="#textile" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.13);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,9vw,44px);letter-spacing:-.04em;color:#fff">Textile<span style="font:13px 'DM Sans',sans-serif;color:#98a6bc">03</span></a>
+      <a href="studio.html" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.13);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,9vw,44px);letter-spacing:-.04em;color:#fff">Studio 3D<span style="font:13px 'DM Sans',sans-serif;color:#98a6bc">04</span></a>
+      <a href="#a-propos" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.13);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,9vw,44px);letter-spacing:-.04em;color:#fff">À propos<span style="font:13px 'DM Sans',sans-serif;color:#98a6bc">05</span></a>
+    </nav>
+    <a href="#devis" onClick="{{ closeMenu }}" style="display:flex;align-items:center;justify-content:center;gap:12px;min-height:56px;border-radius:999px;background:#ffed00;color:#101827;font-size:15px;font-weight:700">Demander un devis <span aria-hidden="true">↗</span></a>
+  </div>
+  </sc-if>
+  <sc-if value="{{ isAccueil }}" hint-placeholder-val="{{ true }}">
+  <div data-screen-label="Accueil">
+
+  <!-- HERO -->
+  <section data-reveal="" style="position:relative;overflow:hidden;background:radial-gradient(ellipse at 72% 45%,rgba(47,124,255,.22),transparent 38%),linear-gradient(90deg,#020711 0%,#071225 55%,#020711 100%)">
+    <div style="max-width:1240px;margin:0 auto;padding:72px 24px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:center;gap:32px">
+      <div style="max-width:580px">
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>TEXTILE PERSONNALISÉ / SUBLIMATION</span>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(52px,7vw,104px);line-height:.9;letter-spacing:-.05em;margin:26px 0 24px;text-wrap:balance">Vos idées prennent <em style="font-style:normal;color:#ffed00">forme.</em></h1>
+        <p style="font-size:19px;line-height:1.7;color:#aab6ca;margin:0 0 32px;max-width:480px;text-wrap:pretty">Maillots, tenues d'équipe et textile personnalisé pour clubs, entreprises et événements. Une identité pensée pour être portée, reconnue et mémorisée.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          
+          <a href="studio.html" style="display:inline-flex;align-items:center;gap:14px;min-height:56px;padding:0 26px;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#fff;font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0" style-hover="background:rgba(255,255,255,.07);color:#fff">Essayer le Studio 3D</a>
+        </div>
+        <div style="display:flex;gap:36px;margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;gap:4px"><strong style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600">Design</strong><span style="font-size:11px;letter-spacing:.16em;color:#98a6bc">INCLUS DANS CHAQUE PROJET</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><strong style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600">48 h</strong><span style="font-size:11px;letter-spacing:.16em;color:#98a6bc">RÉPONSE AU DEVIS</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px"></div>
+        </div>
+      </div>
+
+      <div style="position:relative;display:grid;place-items:center;min-height:420px;padding:20px 0;perspective:1200px">
+        <div aria-hidden="true" style="position:absolute;width:min(70%,520px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(91,156,255,.32);box-shadow:0 0 90px rgba(47,124,255,.22),inset 0 0 90px rgba(47,124,255,.12);transform:rotateX(66deg);animation:fmHalo 7s ease-in-out infinite"></div>
+        <div aria-hidden="true" style="position:absolute;bottom:10%;width:55%;height:26px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,237,0,.22),transparent 65%);filter:blur(8px);animation:fmFloor 7s ease-in-out infinite"></div>
+        <img src="assets/jersey-cutout.webp" alt="Maillot FreshMerch sublimé bleu marine et jaune" style="position:relative;z-index:2;width:min(100%,640px);filter:drop-shadow(0 40px 45px rgba(0,0,0,.55));animation:fmJersey 7s ease-in-out infinite;transform-origin:50% 60%;will-change:transform">
+        
+        <span style="position:absolute;z-index:3;bottom:12%;left:6%;font-size:11px;letter-spacing:.18em;color:#98a6bc">FRESHMERCH / 001</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCIPLINES STRIP -->
+  <sc-if value="{{ showMarquee }}" hint-placeholder-val="{{ true }}">
+  {{ marquee }}
+  </sc-if>
+
+  <!-- UNIVERS -->
+  <section data-reveal="" id="univers" style="padding:110px 24px;background:#020711">
+    <div style="max-width:1240px;margin:0 auto">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:56px">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>01 / UNIVERS</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 0">Un métier,<br><em style="font-style:normal;color:#ffed00">trois façons d'y entrer.</em></h2>
+        </div>
+        
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px 18px">
+        <a href="#sport" data-reveal="" style="display:flex;flex-direction:column;gap:16px;color:#fff;min-width:0" style-hover="color:#fff">
+          <div style="position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:radial-gradient(circle at 50% 40%,#0d2a4e,#071225 70%)">
+            <img src="assets/univers-sport.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">
+            <span style="position:absolute;top:16px;left:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;letter-spacing:.15em;color:#ffed00">01</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:0 4px">
+            
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;letter-spacing:-.03em;margin:0;line-height:1.05">Maillots &amp; tenues d'équipe</h3>
+            <p style="margin:0;font-size:15px;color:#aab6ca;line-height:1.55;text-wrap:pretty">Design intégré à la fibre, pensé pour la performance et l'identité de votre club.</p>
+            <span style="margin-top:6px;font-size:13px;font-weight:700;color:#ffed00">Découvrir ↗</span>
+          </div>
+        </a>
+        <a href="#textile" data-reveal="" style="display:flex;flex-direction:column;gap:16px;color:#fff;min-width:0" style-hover="color:#fff">
+          <div style="position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:radial-gradient(circle at 50% 40%,#0d2a4e,#071225 70%)">
+            <img src="assets/univers-textile.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">
+            <span style="position:absolute;top:16px;left:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;letter-spacing:.15em;color:#ffed00">02</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:0 4px">
+            
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;letter-spacing:-.03em;margin:0;line-height:1.05">T-shirts, sweats &amp; polos</h3>
+            <p style="margin:0;font-size:15px;color:#aab6ca;line-height:1.55;text-wrap:pretty">Flocage ou broderie, pour votre entreprise, association ou événement.</p>
+            <span style="margin-top:6px;font-size:13px;font-weight:700;color:#ffed00">Voir le catalogue ↗</span>
+          </div>
+        </a>
+        <a href="studio.html" data-reveal="" style="display:flex;flex-direction:column;gap:16px;color:#fff;min-width:0" style-hover="color:#fff">
+          <div style="position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:radial-gradient(circle at 50% 40%,#0d2a4e,#071225 70%)">
+            <div style="position: absolute; inset: 0; z-index: 1; background-image: linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px); background-size: 34px 34px; pointer-events: none; left: 3px; top: -19px; background: url(&quot;./chatgpt-image-21-sept-2026-03_12_05-muajvwu3-r5yg.png&quot;) center / cover no-repeat"></div><img src="assets/jersey-banner.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% center">
+            <span style="position:absolute;top:16px;left:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;letter-spacing:.15em;color:#ffed00">03</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:0 4px">
+            
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;letter-spacing:-.03em;margin:0;line-height:1.05">Studio</h3>
+            <p style="margin:0;font-size:15px;color:#aab6ca;line-height:1.55;text-wrap:pretty">Composez votre maillot en direct et visualisez le rendu avant de commander.</p>
+            <span style="margin-top:6px;font-size:13px;font-weight:700;color:#ffed00">Ouvrir le Studio ↗</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAVOIR-FAIRE -->
+  
+
+  <!-- CONTACT -->
+  <section data-reveal="" id="savoir-faire" style="padding:110px 24px;background:#071225;border-top:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:64px">
+      <div style="position:sticky;top:110px;align-self:start">
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>02 / SAVOIR-FAIRE</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 22px">Le détail fait<br><em style="font-style:normal;color:#ffed00">la différence.</em></h2>
+        <p style="max-width:380px;color:#98a6bc;font-size:17px;margin:0;text-wrap:pretty">Chaque choix — matière, coupe, couleur, impression, finition — participe au rendu final. De la première idée jusqu'à la pièce livrée.</p>
+        <div style="margin-top:40px;border-radius:16px;overflow:hidden;aspect-ratio:3/2;max-width:560px;position:relative;background:#071225">{{ sportSlideshow }}</div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.13)">
+        <sc-for list="{{ craft }}" as="row" hint-placeholder-count="5">
+          <article style="display:grid;grid-template-columns:48px minmax(0,1fr) 28px;gap:18px;align-items:center;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.13)">
+            <span style="font-size:12px;color:#98a6bc;letter-spacing:.1em">{{ row.n }}</span>
+            <div>
+              <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;letter-spacing:-.03em;margin:0 0 6px;line-height:1.1">{{ row.title }}</h3>
+              <p style="margin:0;color:#98a6bc;font-size:16px;line-height:1.6;text-wrap:pretty">{{ row.text }}</p>
+            </div>
+            <b aria-hidden="true" style="font-weight:400;font-size:20px;color:#ffed00">↗</b>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section><section data-reveal="" id="contact" style="position:relative;overflow:hidden;background-color:#071225;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.045) 0 1px,transparent 1px 7px),repeating-linear-gradient(-45deg,rgba(255,255,255,.045) 0 1px,transparent 1px 7px),radial-gradient(ellipse at 50% 0%,rgba(47,124,255,.22),transparent 60%);border-top:1px solid rgba(255,255,255,.08)">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(255,237,0,.08),transparent 55%)"></div>
+    <div style="position:relative;z-index:2;max-width:760px;margin:0 auto;padding:110px 24px;display:flex;flex-direction:column;align-items:center;text-align:center">
+      <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>04 / CONTACT<i style="width:28px;height:1px;background:#ffed00"></i></span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(44px,6.5vw,92px);line-height:.9;letter-spacing:-.06em;margin:22px 0 20px;text-wrap:balance">Votre prochain<br><em style="font-style:normal;color:#ffed00">projet commence ici.</em></h2>
+      <p style="color:#dbe4f7;font-size:18px;line-height:1.7;margin:0 0 36px;max-width:520px;text-wrap:pretty">Un message rapide suffit pour démarrer l'échange. Pour un devis détaillé, direction la page dédiée.</p>
+      <form onSubmit="{{ submitLead }}" style="display:flex;flex-direction:column;gap:16px;width:100%;max-width:600px;text-align:left">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#dbe4f7">Nom
+            <input name="name" type="text" required="" autoComplete="name" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;outline:none" style-focus="border-color:#ffed00;background:rgba(255,255,255,.14)">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#dbe4f7">Email
+            <input name="email" type="email" required="" autoComplete="email" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;outline:none" style-focus="border-color:#ffed00;background:rgba(255,255,255,.14)">
+          </label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#dbe4f7">Votre projet
+          <textarea name="message" rows="4" required="" placeholder="Type de textile, quantité, délai souhaité…" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;resize:vertical;outline:none" style-focus="border-color:#ffed00;background:rgba(255,255,255,.14)"></textarea>
+        </label>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:6px">
+          <button type="submit" style="display:inline-flex;align-items:center;gap:14px;min-height:58px;padding:0 28px;border-radius:999px;border:0;background:#ffed00;color:#101827;font:inherit;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0" style-hover="background:#fff45c">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+          <a href="#devis" style="display:inline-flex;align-items:center;gap:14px;min-height:58px;padding:0 28px;border-radius:999px;border:1px solid rgba(255,255,255,.3);color:#fff;font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0" style-hover="background:rgba(255,255,255,.08);color:#fff">Devis détaillé</a>
+        </div>
+        <p role="status" style="margin:4px 0 0;font-size:14px;min-height:20px;color:#fff5cf;text-align:center">{{ leadStatus }}</p>
+      </form>
+    </div>
+  </section>
+
+  </div>
+  </sc-if>
+  <sc-if value="{{ isSport }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Sports">
+
+  <section data-reveal="" style="position:relative;overflow:hidden;background:radial-gradient(circle at 75% 20%,rgba(47,124,255,.18),transparent 40%),linear-gradient(90deg,#020711 0%,#071225 60%,#020711 100%)">
+    
+  </section>
+
+  <section data-reveal="" id="sports" style="padding:100px 24px;background:#020711">
+    <div style="max-width:1240px;margin:0 auto">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:48px">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>01 / DISCIPLINES</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 0">Chaque sport<br><em style="font-style:normal;color:#ffed00">a sa tenue.</em></h2>
+        </div>
+        
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px 18px">
+        <sc-for list="{{ sports }}" as="sp" hint-placeholder-count="6">
+          <a href="{{ sp.href }}" data-reveal="" style="display:flex;flex-direction:column;gap:14px;grid-column:{{ sp.span }};color:#fff;min-width:0" style-hover="color:#fff">
+            <div style="position:relative;border-radius:16px;overflow:hidden;background:#071225;aspect-ratio:3/2">
+              <img src="{{ sp.img }}" alt="{{ sp.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.75,.2,1)">
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:0 4px">
+              <div style="display:flex;gap:14px;align-items:baseline;min-width:0">
+                <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:.15em;color:#ffed00;flex-shrink:0">{{ sp.n }}</span>
+                <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.02em;line-height:1;text-transform:uppercase;color:#fff">{{ sp.name }}</h3>
+              </div>
+              
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:100px 24px;background:#071225;border-top:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:64px">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>02 / LA TECHNIQUE</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 22px">La sublimation,<br><em style="font-style:normal;color:#ffed00">expliquée simplement.</em></h2>
+        <p style="max-width:420px;color:#98a6bc;font-size:17px;margin:0;text-wrap:pretty">Le design est imprimé sur un papier transfert puis fixé au textile par chaleur et pression : la couleur devient une partie de la fibre, elle ne craquelle pas et ne s'efface pas au lavage.</p>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.13)">
+        <sc-for list="{{ tech }}" as="row" hint-placeholder-count="3">
+          <article style="display:grid;grid-template-columns:48px minmax(0,1fr) 28px;gap:18px;align-items:center;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.13)">
+            <span style="font-size:12px;color:#98a6bc;letter-spacing:.1em">{{ row.n }}</span>
+            <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;letter-spacing:-.03em;margin:0 0 6px;line-height:1.1">{{ row.title }}</h3><p style="margin:0;color:#98a6bc;font-size:16px;line-height:1.6;text-wrap:pretty">{{ row.text }}</p></div>
+            <b aria-hidden="true" style="font-weight:400;font-size:20px;color:#ffed00">↗</b>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  
+
+  </div>
+  </sc-if>
+  <sc-if value="{{ isTextile }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Textile">
+
+  <section data-reveal="" style="position:relative;overflow:hidden;background:radial-gradient(circle at 75% 20%,rgba(47,124,255,.18),transparent 40%),linear-gradient(90deg,#020711 0%,#071225 60%,#020711 100%)">
+    <div style="max-width:1240px;margin:0 auto;padding:110px 24px 90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:40px;align-items:center">
+      <div style="max-width:720px">
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>TEXTILE PERSONNALISÉ</span>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(44px,6.4vw,84px);line-height:.94;letter-spacing:-.05em;margin:22px 0 22px;text-wrap:balance">Un textile qui porte <em style="font-style:normal;color:#ffed00">votre image.</em></h1>
+        <p style="color:#aab6ca;font-size:19px;line-height:1.7;margin:0 0 30px;max-width:600px;text-wrap:pretty">T-shirts, sweats, polos, vestes et joggings marqués par flocage ou broderie — pour vos équipes, votre association ou votre prochain événement.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          
+          <a href="#catalogue" style="display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 24px;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#fff;font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0" style-hover="background:rgba(255,255,255,.07);color:#fff">Voir le catalogue ↓</a>
+        </div>
+        <div style="display:flex;gap:32px;margin-top:44px;padding-top:20px;border-top:1px solid rgba(255,255,255,.13);flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;gap:5px"><strong style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600">Flocage</strong><span style="font-size:11px;letter-spacing:.14em;color:#98a6bc">FILM &amp; PRESSE CHAUDE</span></div>
+          <div style="display:flex;flex-direction:column;gap:5px"><strong style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600">Broderie</strong><span style="font-size:11px;letter-spacing:.14em;color:#98a6bc">FINITION HAUT DE GAMME</span></div>
+          <div style="display:flex;flex-direction:column;gap:5px"><strong style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600">Sur mesure</strong><span style="font-size:11px;letter-spacing:.14em;color:#98a6bc">QUANTITÉ &amp; DÉLAI ADAPTÉS</span></div>
+        </div>
+      </div>
+      <div style="display:grid;place-items:center;position:relative"><div aria-hidden="true" style="position:absolute;bottom:8%;width:55%;height:24px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,237,0,.22),transparent 65%);filter:blur(8px)"></div><img src="assets/hoodie-cutout.png" alt="Hoodie FreshMerch bleu marine, blanc et jaune" style="position:relative;width:min(100%,520px);filter:drop-shadow(0 40px 45px rgba(0,0,0,.55))"></div>
+    </div>
+  </section>
+
+  <section data-reveal="" id="catalogue" style="padding:100px 24px;background:#f4f6f8;color:#071225">
+    <div style="max-width:1240px;margin:0 auto">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:36px">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#647087"><i style="width:28px;height:1px;background:#2f7cff"></i>01 / CATALOGUE</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 0">Une gamme pensée<br><em style="font-style:normal;color:#2f7cff">pour chaque usage.</em></h2>
+        </div>
+        <p style="max-width:380px;color:#5c6879;font-size:17px;margin:0;text-wrap:pretty">Les visuels sont des exemples : chaque pièce est personnalisable selon votre projet.</p>
+      </div>
+
+      <div role="tablist" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+          <button type="button" onClick="{{ c.select }}" aria-pressed="{{ c.active }}" style="border:1px solid rgba(8,18,37,.15);background:{{ c.bg }};color:{{ c.fg }};font:inherit;font-size:13px;font-weight:600;padding:10px 18px;border-radius:999px;cursor:pointer">{{ c.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:18px">
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="8">
+          <article style="border:1px solid rgba(8,18,37,.12);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column">
+            <div style="aspect-ratio:1;display:grid;place-items:center;background:{{ p.art }};color:rgba(255,255,255,.9);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-align:center;padding:20px">{{ p.tag }}</div>
+            <div style="padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1">
+              <span style="font-size:11px;letter-spacing:.14em;color:#5c6879;text-transform:uppercase">{{ p.catLabel }}</span>
+              <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin:0;letter-spacing:-.02em">{{ p.name }}</h3>
+              <p style="margin:0;font-size:14px;color:#6b7689;line-height:1.55;flex:1">{{ p.desc }}</p>
+              <a href="#devis" style="margin-top:10px;font-size:13px;font-weight:700;color:#2f7cff">Personnaliser ↗</a>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:56px;border-radius:16px;border:1px dashed rgba(8,18,37,.25);background:#fff;padding:40px 44px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+        <div style="max-width:560px">
+          <span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:rgba(47,124,255,.12);color:#2f7cff;margin-bottom:14px">Bientôt disponible</span>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:24px;margin:0 0 8px;letter-spacing:-.02em">Catalogue TopTex complet</h3>
+          <p style="margin:0;color:#5c6879;font-size:15px;line-height:1.6">L'intégration du catalogue en ligne arrive prochainement sur cette page. En attendant, décrivez-nous votre besoin : la gamme réelle est bien plus large.</p>
+        </div>
+        <a href="#devis" style="display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 24px;border-radius:999px;background:#071225;color:#fff;font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0" style-hover="background:#0d2a4e;color:#fff">Demander un devis <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:100px 24px;background:#071225">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:64px">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>02 / TECHNIQUES</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 22px">Flocage, broderie<br><em style="font-style:normal;color:#ffed00">ou impression.</em></h2>
+        <p style="max-width:400px;color:#98a6bc;font-size:17px;margin:0;text-wrap:pretty">Trois techniques complémentaires, choisies selon le rendu recherché et le support.</p>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.13)">
+        <sc-for list="{{ techTextile }}" as="row" hint-placeholder-count="3">
+          <article style="display:grid;grid-template-columns:48px minmax(0,1fr) 28px;gap:18px;align-items:center;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.13)">
+            <span style="font-size:12px;color:#98a6bc;letter-spacing:.1em">{{ row.n }}</span>
+            <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;letter-spacing:-.03em;margin:0 0 6px;line-height:1.1">{{ row.title }}</h3><p style="margin:0;color:#98a6bc;font-size:16px;line-height:1.6;text-wrap:pretty">{{ row.text }}</p></div>
+            <b aria-hidden="true" style="font-weight:400;font-size:20px;color:#ffed00">↗</b>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+    </div>
+  </sc-if>
+  <sc-if value="{{ isApropos }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="À propos">
+
+  <section data-reveal="" style="position:relative;overflow:hidden;background:radial-gradient(circle at 75% 20%,rgba(47,124,255,.18),transparent 40%),linear-gradient(90deg,#020711 0%,#071225 60%,#020711 100%)">
+    <div style="max-width:1240px;margin:0 auto;padding:110px 24px 90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;align-items:center">
+      
+      <div style="max-width:640px">
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>À PROPOS</span>
+        
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(44px,6.4vw,84px);line-height:.94;letter-spacing:-.05em;margin:22px 0 22px;text-wrap:balance">Une équipe qui pense <em style="font-style:normal;color:#ffed00">textile et sport.</em></h1><p style="color:#aab6ca;font-size:19px;line-height:1.7;margin:0;max-width:560px;text-wrap:pretty">FreshMerch accompagne clubs, entreprises, associations et événements dans la création de leur identité textile — du premier croquis à la pièce livrée.</p>
+      </div><div style="border-radius:20px;overflow:hidden;aspect-ratio:1;max-width:520px;width:100%;justify-self:center"><img src="assets/a-propos-visuel.png" alt="Visuel FreshMerch" style="width:100%;height:100%;object-fit:contain;display:block"></div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:100px 24px;background:#f4f6f8;color:#071225">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:56px;align-items:start">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#647087"><i style="width:28px;height:1px;background:#2f7cff"></i>01 / NOTRE HISTOIRE</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 0">Née d'une envie<br><em style="font-style:normal;color:#2f7cff">simple.</em></h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;font-size:18px;line-height:1.75;color:#3c4a63;text-wrap:pretty">
+        <p style="margin:0;font-size:22px;color:#071225;font-weight:500">Rendre le textile personnalisé accessible, rapide et fidèle à l'identité de chaque projet.</p>
+        <p style="margin:0">FreshMerch est parti d'un constat partagé par beaucoup de clubs et d'entreprises : commander des textiles personnalisés est souvent long et surtout décevant sur le rendu final.</p>
+        <p style="margin:0">Nous avons construit notre projet autour de trois priorités : la clarté du process, la qualité de fabrication et la réactivité de l'équipe.&nbsp;</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:100px 24px;background:#071225">
+    <div style="max-width:1240px;margin:0 auto">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:48px">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>02 / NOS VALEURS</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 0">Ce qui guide<br><em style="font-style:normal;color:#ffed00">chaque projet.</em></h2>
+        </div>
+        
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+          <article style="border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:32px 28px;background:#020711;display:flex;flex-direction:column;gap:12px">
+            <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;color:#ffed00;letter-spacing:.1em">{{ v.n }}</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;margin:0;letter-spacing:-.03em">{{ v.title }}</h3>
+            <p style="margin:0;color:#98a6bc;font-size:16px;line-height:1.6;text-wrap:pretty">{{ v.text }}</p>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:100px 24px;background:#020711">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:64px">
+      <div style="position:sticky;top:110px;align-self:start">
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>03 / NOTRE MÉTHODE</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 22px">Comment nous<br><em style="font-style:normal;color:#ffed00">travaillons.</em></h2>
+        
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.13)">
+        <sc-for list="{{ method }}" as="m" hint-placeholder-count="4">
+          <article style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:18px;align-items:start;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.13)">
+            <span style="font-size:12px;color:#98a6bc;letter-spacing:.1em;padding-top:8px">{{ m.n }}</span>
+            <div><h3 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:26px;letter-spacing:-.02em;margin:0 0 8px;line-height:1.1">{{ m.title }}</h3><p style="margin:0;color:#98a6bc;font-size:16px;line-height:1.65;max-width:560px;text-wrap:pretty">{{ m.text }}</p></div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+    </div>
+  </sc-if>
+  <sc-if value="{{ isDevis }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Devis">
+
+  <section style="position:relative;overflow:hidden;background:#020711">
+    <img src="assets/jersey-banner.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center">
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,#020711 0%,#020711 34%,rgba(2,7,17,.75) 55%,rgba(2,7,17,.25) 100%)"></div>
+    <div style="position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:110px 24px 80px">
+      <div style="max-width:560px">
+        <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>DEMANDE DE DEVIS</span>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(44px,6.4vw,84px);line-height:.94;letter-spacing:-.05em;margin:22px 0 22px;text-wrap:balance">Parlez-nous de <em style="font-style:normal;color:#ffed00">votre projet.</em></h1>
+        <p style="color:#dbe4f7;font-size:18px;line-height:1.7;margin:0;text-wrap:pretty">Trois étapes, deux minutes. Réponse sous 48 h ouvrées.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:80px 24px 100px;background:#f4f6f8;color:#071225">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:48px;align-items:start">
+
+      <div style="display:flex;flex-direction:column;gap:28px;min-width:0">
+        <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ stepsNav }}" as="st" hint-placeholder-count="5">
+            <li><a href="{{ st.href }}" style="display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;font-size:13px;font-weight:600;color:#3c4a63;background:#fff;border:1px solid rgba(8,18,37,.1)" style-hover="color:#071225;border-color:#071225"><span style="width:24px;height:24px;border-radius:50%;background:#071225;color:#ffed00;display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-size:12px;flex-shrink:0">{{ st.n }}</span>{{ st.label }}</a></li>
+          </sc-for>
+        </ol>
+
+
+      <form onSubmit="{{ submit }}" novalidate="" style="display:flex;flex-direction:column;gap:0;max-width:760px">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="display:flex;gap:14px;padding:20px 22px;border-radius:14px;margin-bottom:28px;background:rgba(46,160,90,.1);border:1px solid rgba(46,160,90,.35);color:#1d5f38;font-size:15px;line-height:1.6">
+            <span aria-hidden="true" style="flex-shrink:0;width:30px;height:30px;border-radius:50%;background:#2ea05a;color:#fff;display:grid;place-items:center;font-weight:700">✓</span>
+            <div><strong style="display:block;font-family:'Space Grotesk',sans-serif;margin-bottom:4px">Votre messagerie s'ouvre avec la demande pré-remplie.</strong>Cliquez sur « Envoyer » et joignez vos fichiers. Rien ne s'est ouvert ? <button type="button" onClick="{{ copyRecap }}" style="border:0;background:none;padding:0;font:inherit;font-weight:700;color:#2f7cff;cursor:pointer;text-decoration:underline">Copier le récapitulatif</button> {{ copyStatus }}</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="padding:16px 20px;border-radius:14px;margin-bottom:28px;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);color:#8a2a20;font-size:15px">{{ error }}</div>
+        </sc-if>
+
+        <fieldset id="fs-1" style="border:0;margin:0;padding:0 0 34px;display:flex;flex-direction:column;gap:16px">
+          <legend style="display:flex;align-items:center;gap:14px;padding:0;margin-bottom:20px;float:left;width:100%;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px"><span style="width:30px;height:30px;border-radius:50%;background:rgba(47,124,255,.12);color:#2f7cff;display:grid;place-items:center;font-size:13px">1</span>Vous</legend>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;clear:both">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Nom <b style="color:#c0392b">*</b></span><input name="nom" required="" autoComplete="family-name" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Prénom <b style="color:#c0392b">*</b></span><input name="prenom" required="" autoComplete="given-name" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Email <b style="color:#c0392b">*</b></span><input name="email" type="email" required="" autoComplete="email" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Téléphone <b style="color:#c0392b">*</b></span><input name="telephone" type="tel" required="" autoComplete="tel" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"></label>
+          </div>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Club / Société / Association</span><input name="societe" autoComplete="organization" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"></label>
+        </fieldset>
+
+        <fieldset id="fs-2" style="border:0;border-top:1px solid rgba(8,18,37,.12);margin:0;padding:34px 0;display:flex;flex-direction:column;gap:16px">
+          <legend style="display:flex;align-items:center;gap:14px;padding:0;margin-bottom:20px;float:left;width:100%;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px"><span style="width:30px;height:30px;border-radius:50%;background:rgba(47,124,255,.12);color:#2f7cff;display:grid;place-items:center;font-size:13px">2</span>Votre projet</legend>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;clear:both">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Type de projet <b style="color:#c0392b">*</b></span><select name="type_de_projet" required="" defaultValue="{{ defaultType }}" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"><option value="">Sélectionnez…</option><option>Textile personnalisé (t-shirts, sweats, polos…)</option><option>Sport &amp; sublimation (maillots, tenues d'équipe)</option><option>Événementiel</option><option>Autre / je ne sais pas encore</option></select></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Produit(s) recherché(s) <b style="color:#c0392b">*</b></span><input name="produit" required="" defaultValue="{{ defaultProduct }}" placeholder="ex : maillots de football, sweats zippés…" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Quantité estimée</span><input name="quantite" placeholder="ex : 25 pièces" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Délai souhaité</span><select name="delai_souhaite" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"><option value="">Sélectionnez…</option><option>Moins de 2 semaines</option><option>2 à 4 semaines</option><option>1 à 2 mois</option><option>Pas de contrainte particulière</option></select></label>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Décrivez votre projet <b style="color:#c0392b">*</b></span><textarea name="description" rows="5" required="" placeholder="Couleurs, logo, noms et numéros, technique souhaitée, contraintes…" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none;resize:vertical" style-focus="border-color:#2f7cff"></textarea></label>
+        </fieldset>
+
+        <fieldset id="fs-3" style="border:0;border-top:1px solid rgba(8,18,37,.12);margin:0;padding:34px 0 0;display:flex;flex-direction:column;gap:18px">
+          <legend style="display:flex;align-items:center;gap:14px;padding:0;margin-bottom:20px;float:left;width:100%;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px"><span style="width:30px;height:30px;border-radius:50%;background:rgba(47,124,255,.12);color:#2f7cff;display:grid;place-items:center;font-size:13px">3</span>Fichiers &amp; envoi</legend>
+          <label style="display:block;clear:both;border:1.5px dashed rgba(8,18,37,.25);border-radius:14px;padding:22px;text-align:center;cursor:pointer;background:#fff" style-hover="border-color:#2f7cff">
+            <span style="display:block;font-weight:700;font-size:15px">Logo, maquette ou inspiration (facultatif)</span>
+            <span style="display:block;margin-top:6px;font-size:13px;color:#647087">{{ filesLabel }}</span>
+            <input name="fichiers" type="file" multiple="" accept=".pdf,.png,.jpg,.jpeg,.svg,.zip" onChange="{{ onFiles }}" style="display:none">
+          </label>
+          <label style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#3c4a63"><input name="consentement" type="checkbox" required="" style="width:18px;height:18px;margin-top:3px;flex-shrink:0">J'accepte d'être recontacté(e) par FreshMerch au sujet de ma demande. <b style="color:#c0392b">*</b></label>
+          <button type="submit" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;min-height:58px;padding:0 28px;border-radius:999px;border:0;background:#ffed00;color:#101827;font:inherit;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;white-space:nowrap;flex-shrink:0" style-hover="background:#fff45c">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+        </fieldset>
+      </form>
+        <p style="margin:0;font-size:13px;color:#647087;line-height:1.6">Les champs marqués <b style="color:#c0392b">*</b> sont obligatoires. Vous préférez écrire directement ? <a href="mailto:jules.frescaline@gmail.com" style="color:#2f7cff;font-weight:700">jules.frescaline@gmail.com</a></p>
+      </div>
+
+      <aside aria-hidden="true" style="position:sticky;top:96px;display:grid;place-items:center;min-height:520px;border-radius:24px;background:radial-gradient(circle at 50% 42%,#0d2a4e,#071225 70%);overflow:hidden">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:34px 34px"></div>
+        <div style="position:absolute;bottom:14%;width:56%;height:22px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,237,0,.25),transparent 65%);filter:blur(8px)"></div>
+        <img src="assets/jersey-cutout.webp" alt="" style="position:relative;width:78%;filter:drop-shadow(0 34px 40px rgba(0,0,0,.55))">
+        <span style="position:absolute;top:22px;left:24px;font-size:11px;letter-spacing:.18em;color:#98a6bc">FRESHMERCH / 001</span>
+        <span style="position:absolute;bottom:22px;right:24px;font-size:11px;letter-spacing:.18em;color:#98a6bc">SUBLIMATION</span>
+      </aside>
+    </div>
+  </section>
+
+  </div>
+  </sc-if>
+  <footer style="background:#020711;padding:64px 24px 24px;border-top:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1240px;margin:0 auto">
+      <div style="display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.13)">
+        <div style="display:flex;flex-direction:column;gap:16px;max-width:300px">
+          <img src="assets/freshmerch-logo.png" alt="FreshMerch" style="height:40px;width:auto;align-self:flex-start">
+          <p style="margin:0;color:#98a6bc;font-size:14px;line-height:1.6">Textile personnalisé, équipements sportifs sublimés et créations sur mesure.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:30px;flex:1;max-width:680px;min-width:0">
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#98a6bc"><span style="font-size:11px;letter-spacing:.18em;margin-bottom:6px">EXPLORER</span><a href="#sport">Sports</a><a href="#textile">Textile</a><a href="studio.html">Studio 3D</a></div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#98a6bc"><span style="font-size:11px;letter-spacing:.18em;margin-bottom:6px">PROJET</span><a href="#a-propos">À propos</a></div><div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#98a6bc"><span style="font-size:11px;letter-spacing:.18em;margin-bottom:6px">CONTACT</span><a href="mailto:jules.frescaline@gmail.com" style="overflow-wrap:anywhere;min-width:0">jules.frescaline@gmail.com</a><a href="#devis">Demander un devis</a><a href="https://www.instagram.com/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; width: 207px; height: 47px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg><span style="min-width:0">Visiter notre page Insta</span></a></div>
+          
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:20px;color:#98a6bc;font-size:12px;letter-spacing:.1em">
+        <span>© {{ year }} FreshMerch</span><span>TEXTILE / SPORT / CRÉATION</span><a href="#top">Retour en haut ↑</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"showMarquee":{"editor":"boolean","default":true,"tsType":"boolean","section":"Accueil"}}'>
+class Component extends DCLogic {
+  state = { route: "accueil", query: {}, menuOpen: false, videoIntro: true, slide: 0, leadStatus: "", cat: "", sent: false, error: "", files: [], recap: "", copyStatus: "" };
+  routes = ["accueil", "sport", "textile", "a-propos", "devis"];
+  lastRoute = "accueil";
+  theme = (() => { try { return localStorage.getItem("freshmerch-theme") === "light" ? "light" : "dark"; } catch (e) { return "dark"; } })();
+  applyTheme() { document.documentElement.setAttribute("data-theme", this.theme); try { localStorage.setItem("freshmerch-theme", this.theme); } catch (e) {} }
+  parseHash() {
+    const raw = (window.location.hash || "#accueil").slice(1);
+    const [path, qs] = raw.split("?");
+    if (!this.routes.includes(path)) return null;
+    return { route: path, query: Object.fromEntries(new URLSearchParams(qs || "")) };
+  }
+  reveal() { import("./site.js").then(m => m.initReveal(document)).catch(() => {}); }
+  componentDidMount() {
+    const r = this.parseHash(); if (r) this.setState(r);
+    this.onHash = () => {
+      const r = this.parseHash();
+      if (!r) return; // ancre interne (#catalogue…) : on laisse le navigateur défiler
+      if (r.route !== this.state.route) window.scrollTo(0, 0);
+      document.body.style.overflow = "";
+      this.setState({ ...r, sent: false, error: "", menuOpen: false });
+    };
+    window.addEventListener("hashchange", this.onHash);
+    this.applyTheme();
+    this.slideTimer = setInterval(() => this.setState(s => ({ slide: (s.slide + 1) % 6 })), 3200);
+    this.reveal();
+  }
+  componentWillUnmount() { window.removeEventListener("hashchange", this.onHash); clearInterval(this.slideTimer); }
+  componentDidUpdate() { if (this.state.route !== this.lastRoute) { this.lastRoute = this.state.route; setTimeout(() => this.reveal(), 30); } }
+  renderVals() {
+    const { route, query } = this.state;
+    const sport = query.sport;
+    const q = (s) => `#devis?sport=${encodeURIComponent(s)}`;
+    const lines = { Football: "Une identité pensée pour le terrain.", Handball: "Coupe ample, matière qui respire.", Basketball: "Débardeur et short assortis, numéros intégrés.", Rugby: "Renforts et coutures pensés pour le contact.", Running: "Léger, ajusté, visible.", Esports: "Le jersey de scène, jusqu'au dernier sponsor." };
+    const sportsData = [["Football", "football"], ["Handball", "handball"], ["Basketball", "basketball"], ["Rugby", "rugby"], ["Running", "running"], ["Esports", "esports"]];
+    const cats = [["", "Tout voir"], ["tshirts", "T-shirts & débardeurs"], ["sweats", "Sweats & hoodies"], ["polos", "Polos & vestes"], ["bas", "Bas & accessoires"]];
+    const labels = { tshirts: "T-shirts", sweats: "Sweats", polos: "Polos & vestes", bas: "Bas & accessoires" };
+    const arts = {
+      tshirts: "radial-gradient(circle at 70% 25%,#3d90ff,transparent 55%),linear-gradient(140deg,#071225,#0b2b66)",
+      sweats: "radial-gradient(circle at 20% 15%,#ffcc00,transparent 50%),linear-gradient(135deg,#0a1830,#143f8c)",
+      polos: "radial-gradient(circle at 70% 25%,#3d90ff,transparent 55%),linear-gradient(145deg,#0b1220,#18283e)",
+      bas: "radial-gradient(circle at 30% 20%,#ff5b6e,transparent 48%),linear-gradient(140deg,#071225,#153a79)"
+    };
+    const products = [
+      ["tshirts", "T-shirt col rond", "Coton 180 g, coupe droite. Flocage ou impression numérique.", "T-SHIRT"],
+      ["tshirts", "T-shirt technique", "Polyester respirant pour l'entraînement et les événements sportifs.", "TECHNIQUE"],
+      ["tshirts", "Débardeur", "Léger et ajusté, idéal running et salle.", "DÉBARDEUR"],
+      ["sweats", "Sweat col rond", "Molleton 300 g brossé. Broderie poitrine ou flocage dos.", "SWEAT"],
+      ["sweats", "Hoodie zippé", "Capuche doublée, poches kangourou, marquage broderie.", "HOODIE"],
+      ["polos", "Polo piqué", "Maille piquée 200 g, broderie logo poitrine.", "POLO"],
+      ["polos", "Veste softshell", "Coupe-vent déperlante, broderie ou transfert.", "SOFTSHELL"],
+      ["bas", "Jogging", "Molleton, taille élastiquée, marquage cuisse.", "JOGGING"],
+      ["bas", "Casquette", "6 panneaux, broderie 3D frontale.", "CASQUETTE"]
+    ];
+    const fields = [["nom","Nom"],["prenom","Prénom"],["societe","Société"],["fonction","Fonction"],["email","Email"],["telephone","Téléphone"],["type_de_projet","Type de projet"],["date_souhaitee","Date souhaitée"],["produit","Produits"],["quantite","Quantité"],["delai_souhaite","Délai"],["budget_indicatif","Budget"],["type_personnalisation","Technique"],["couleurs","Couleurs"],["logo","Logo"],["noms_numeros","Noms & numéros"],["sponsors","Sponsors"],["description","Description"]];
+    return {
+      isAccueil: route === "accueil", isSport: route === "sport", isTextile: route === "textile", isApropos: route === "a-propos", isDevis: route === "devis",
+      year: new Date().getFullYear(),
+      isLight: this.theme === "light", themeLabel: this.theme === "light" ? "Mode sombre" : "Mode clair", themeAria: this.theme === "light" ? "Activer le mode sombre" : "Activer le mode clair",
+      menuOpen: this.state.menuOpen, menuAria: this.state.menuOpen ? "Fermer le menu" : "Ouvrir le menu",
+      toggleMenu: () => this.setState(s => { document.body.style.overflow = s.menuOpen ? "" : "hidden"; return { menuOpen: !s.menuOpen }; }),
+      closeMenu: () => { document.body.style.overflow = ""; this.setState({ menuOpen: false }); },
+      showIntro: this.state.videoIntro,
+      skipIntro: () => this.setState({ videoIntro: false }),
+      toggleTheme: () => { this.theme = this.theme === "light" ? "dark" : "light"; this.applyTheme(); this.forceUpdate(); },
+      showMarquee: this.props.showMarquee ?? true,
+      marquee: (() => {
+        const words = ["MAILLOTS", "SHORTS", "CHAUSSETTES", "SURVÊTEMENTS", "VESTES", "SWEATS", "T-SHIRTS", "POLOS", "DÉBARDEURS", "CASQUETTES", "SACS", "SERVIETTES"];
+        return React.createElement("div", { "aria-hidden": "true", style: { overflow: "hidden", background: "#071225", borderTop: "1px solid rgba(255,255,255,.1)", borderBottom: "1px solid rgba(255,255,255,.1)", padding: "12px 0", maskImage: "linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)", WebkitMaskImage: "linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)" } },
+          React.createElement("div", { style: { display: "flex", width: "max-content", animation: "fmMarquee 40s linear infinite", willChange: "transform" } },
+            [0, 1, 2].map(r => React.createElement("div", { key: r, style: { display: "flex", alignItems: "center", flexShrink: 0 } },
+              words.map((w) => React.createElement(React.Fragment, { key: w },
+                React.createElement("span", { style: { fontFamily: "'Space Grotesk',sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: ".16em", color: "#c3cddb", padding: "0 22px", whiteSpace: "nowrap" } }, w),
+                React.createElement("span", { style: { width: 4, height: 4, borderRadius: "50%", background: "#ffed00", flexShrink: 0 } })
+              ))))));
+      })(),
+      // Accueil
+      sportSlideshow: React.createElement("div", { style: { position: "absolute", inset: 0 } },
+        ["football", "handball", "basketball", "rugby", "running", "esports"].map((f, i) => React.createElement("img", {
+          key: f, src: `assets/sports-photos/${f}.jpg`, alt: `Visuel FreshMerch ${f}`, loading: "lazy",
+          style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", opacity: i === this.state.slide ? 1 : 0, transform: i === this.state.slide ? "scale(1)" : "scale(1.04)", transition: "opacity 1s cubic-bezier(.2,.75,.2,1), transform 1.2s cubic-bezier(.2,.75,.2,1)" }
+        })).concat([React.createElement("div", { key: "dots", style: { position: "absolute", left: 16, bottom: 14, display: "flex", gap: 6 } },
+          [0,1,2,3,4,5].map(i => React.createElement("span", { key: i, style: { width: i === this.state.slide ? 22 : 6, height: 6, borderRadius: 999, background: i === this.state.slide ? "#ffed00" : "rgba(255,255,255,.4)", transition: "width .4s cubic-bezier(.2,.75,.2,1)" } })))])),
+      craft: [
+        { n: "01", title: "Design", text: "Une direction visuelle claire, pensée pour votre identité." },
+        { n: "02", title: "Matières", text: "Des supports adaptés à l'usage, au confort et à la performance." },
+        { n: "03", title: "Sublimation", text: "Des couleurs et détails intégrés directement au textile." },
+        { n: "04", title: "Coupe & finition", text: "Une pièce pensée pour tomber juste et durer." },
+        { n: "05", title: "Contrôle qualité", text: "Un regard sur chaque détail avant que le textile arrive sur le terrain." }
+      ],
+      leadStatus: this.state.leadStatus,
+      submitLead: (e) => {
+        e.preventDefault();
+        const f = new FormData(e.target);
+        const body = `Nom : ${f.get("name")}\nEmail : ${f.get("email")}\n\nProjet :\n${f.get("message")}`;
+        window.location.href = `mailto:jules.frescaline@gmail.com?subject=${encodeURIComponent("Nouveau projet FreshMerch")}&body=${encodeURIComponent(body)}`;
+        this.setState({ leadStatus: "Votre messagerie s'ouvre avec la demande pré-remplie." });
+      },
+      // Sport
+      sports: sportsData.map(([name, file], i) => ({ n: String(i + 1).padStart(2, "0"), name, lower: name.toLowerCase(), line: lines[name], img: `assets/sports-photos/${file}.jpg`, alt: `Visuel FreshMerch ${name.toLowerCase()}`, href: q(name), span: "auto" })),
+      tech: [
+        { n: "01", title: "Design vectoriel", text: "Votre identité — couleurs, numéros, sponsors — est déclinée sur un patron adapté à la coupe choisie." },
+        { n: "02", title: "Impression ", text: "Le motif est imprimé puis thermofixé sur une matière technique respirante." },
+        { n: "03", title: "Confection", text: "Assemblage et finitions (coutures plates, empiècements) adaptés à l'usage sportif." }
+      ],
+      // Textile
+      cats: cats.map(([id, label]) => { const active = this.state.cat === id; return { id, label, active, bg: active ? "#071225" : "transparent", fg: active ? "#fff" : "#5c6879", select: () => this.setState({ cat: id }) }; }),
+      products: products.filter(([c]) => !this.state.cat || c === this.state.cat).map(([c, name, desc, tag]) => ({ name, desc, tag, catLabel: labels[c], art: arts[c] })),
+      techTextile: [
+        { n: "01", title: "Flocage textile", text: "Votre visuel est découpé dans un film puis appliqué à la presse chaude. Idéal pour les gros aplats de couleur et les petites séries." },
+        { n: "02", title: "Broderie", text: "Un rendu texturé et durable, parfait pour les logos et les finitions premium sur polos, vestes et casquettes." },
+        { n: "03", title: "Impression numérique", text: "Pour les visuels complexes et les dégradés, directement sur le textile." }
+      ],
+      // À propos
+      values: [
+        { n: "01", title: "Transparence", text: "Un devis clair, un délai annoncé et respecté, aucune surprise à la livraison." },
+        { n: "02", title: "Exigence", text: "Chaque pièce est contrôlée avant expédition : matière, coupe, marquage." },
+        { n: "03", title: "Proximité", text: "Un interlocuteur unique du premier échange jusqu'au retour terrain de vos équipes." }
+      ],
+      method: [
+        { n: "01", title: "Échange initial", text: "Nous cadrons le besoin : type de textile, quantité, délai, budget et identité visuelle." },
+        { n: "02", title: "Proposition & design", text: "Nous vous soumettons une direction visuelle et un devis détaillé pour validation." },
+        { n: "03", title: "Production", text: "Flocage, broderie ou sublimation selon la technique la plus adaptée à votre projet." },
+        { n: "04", title: "Contrôle & livraison", text: "Chaque pièce est vérifiée avant expédition, avec suivi jusqu'à réception." }
+      ],
+      // Devis
+      defaultType: sport ? "Sport & sublimation (maillots, tenues d'équipe)" : "",
+      defaultProduct: sport ? `Maillots ${sport}` : "",
+      stepsNav: [["1","Vous"],["2","Projet"],["3","Envoi"]].map(([n,label]) => ({ n, label, href: `#fs-${n}` })),
+      sent: this.state.sent, hasError: !!this.state.error, error: this.state.error, copyStatus: this.state.copyStatus,
+      filesLabel: this.state.files.length ? this.state.files.join(", ") : "PDF, PNG, JPG, SVG, ZIP — 10 Mo max par fichier",
+      onFiles: (e) => this.setState({ files: Array.from(e.target.files).map(f => f.name) }),
+      copyRecap: async () => { try { await navigator.clipboard.writeText(this.state.recap); this.setState({ copyStatus: "Copié !" }); } catch { this.setState({ copyStatus: "Copie impossible — sélectionnez le texte manuellement." }); } },
+      submit: (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const missing = Array.from(form.querySelectorAll("[required]")).filter(el => el.type === "checkbox" ? !el.checked : !el.value.trim());
+        if (missing.length) { this.setState({ error: "Merci de compléter les champs obligatoires (*) avant d'envoyer.", sent: false }); missing[0].focus(); return; }
+        const f = new FormData(form);
+        const linesOut = fields.map(([k, l]) => f.get(k) ? `${l} : ${f.get(k)}` : null).filter(Boolean);
+        if (this.state.files.length) linesOut.push(`\nFichiers à joindre : ${this.state.files.join(", ")}`);
+        const recap = linesOut.join("\n");
+        window.location.href = `mailto:jules.frescaline@gmail.com?subject=${encodeURIComponent("Demande de devis FreshMerch — " + f.get("prenom") + " " + f.get("nom"))}&body=${encodeURIComponent(recap)}`;
+        this.setState({ sent: true, error: "", recap });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
