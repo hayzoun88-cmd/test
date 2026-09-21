@@ -28,14 +28,19 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,.45)}
   #top [data-m="nav"],#top [data-m="headercta"]{display:none!important}
   #top [data-m="burger"]{display:inline-flex!important}
   #top header{padding:10px 16px!important}
-  #top [style*="padding: 110px 24px"],#top [style*="padding: 100px 24px"],#top [style*="padding: 110px 24px 90px"],#top [style*="padding: 110px 24px 60px"],#top [style*="padding: 80px 24px 100px"],#top [style*="padding: 110px 24px 80px"]{padding:64px 20px!important}
+  #top header>div{gap:12px!important}
+  #top [style*="padding: 110px 24px"],#top [style*="padding: 100px 24px"],#top [style*="padding: 110px 24px 90px"],#top [style*="padding: 80px 24px 100px"],#top [style*="padding: 110px 24px 80px"]{padding:64px 20px!important}
   #top [style*="padding: 72px 24px 40px"]{padding:40px 20px 16px!important}
+  #top [style*="padding: 40px 44px"]{padding:28px 22px!important}
   #top [style*="position: sticky"]:not(header){position:static!important;top:auto!important}
   #top [style*="min-height: 420px"]{min-height:300px!important}
-  #top [style*="grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr)"]{grid-template-columns:1fr!important}
   #top aside[aria-hidden="true"]{display:none!important}
   #top [style*="gap: 64px"]{gap:36px!important}
   #top footer{padding:48px 20px 20px!important}
+  #top [style*="aspect-ratio: 3 / 2"] img[style*="object-fit: cover"]{object-position:50% 22%!important}
+  #top [style*="min-height: 42px"]{min-height:44px!important}
+  #top [style*="padding: 10px 18px"]{min-height:44px;padding:12px 18px!important}
+  #top [style*="padding: 8px 14px 8px 8px"]{min-height:44px;padding:12px 16px 12px 8px!important}
 }
 @media (max-width:520px){
   #top{font-size:16px!important}
@@ -43,12 +48,16 @@ input::placeholder,textarea::placeholder{color:rgba(255,255,255,.45)}
   #top [style*="font-size: clamp(44px, 6.4vw, 84px)"],#top [style*="font-size: clamp(44px, 6.5vw, 92px)"]{font-size:clamp(36px,11vw,48px)!important}
   #top [style*="font-size: clamp(40px, 5.5vw, 76px)"]{font-size:clamp(32px,10vw,44px)!important}
   #top [style*="font-size: 19px"],#top [style*="font-size: 18px"]{font-size:16px!important}
+  #top [style*="font-size: 28px"]{font-size:22px!important}
+  #top [style*="font-size: 26px"]{font-size:21px!important}
   #top [style*="display: flex; gap: 12px; flex-wrap: wrap"] > a,#top [style*="display: flex; gap: 12px; flex-wrap: wrap"] > button{width:100%!important;justify-content:center!important}
-  #top [style*="gap: 36px; margin-top: 44px"]{gap:18px 24px!important;margin-top:28px!important}
-  #top [style*="min-height: 300px"]{min-height:240px!important}
-  #top [style*="padding: 54px 48px"]{padding:32px 24px!important}
+  #top [style*="gap: 36px; margin-top: 44px"],#top [style*="gap: 32px; margin-top: 44px"]{gap:18px 24px!important;margin-top:28px!important}
+  #top [style*="min-height: 420px"]{min-height:240px!important}
+  #top [style*="padding: 32px 28px"]{padding:22px 20px!important}
   #top [style*="aspect-ratio: 4 / 5"]{aspect-ratio:1!important}
-  #top [data-m="burger"] ~ *{margin-left:0}
+  #top header>div{gap:8px!important}
+  #top header button[aria-pressed]{padding:0!important;width:44px;height:44px;justify-content:center;min-height:44px!important}
+  #top header button[aria-pressed] span:not([aria-hidden]){display:none}
 }
 
 /* ---- MODE CLAIR : remappe les couleurs inline (sérialisées en rgb par le navigateur) ---- */
@@ -92,16 +101,16 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
         <a href="studio.html" style="white-space:nowrap" style-hover="color:#fff">Studio</a>
         <a href="#a-propos" style="white-space:nowrap" style-hover="color:#fff">À propos</a>
       </nav>
-      <button type="button" onClick="{{ toggleTheme }}" aria-pressed="{{ isLight }}" aria-label="{{ themeAria }}" style="display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;cursor:pointer;white-space:nowrap;flex-shrink:0" style-hover="border-color:#ffed00"><span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:#ffed00;box-shadow:0 0 0 3px rgba(255,237,0,.25);flex-shrink:0"></span>{{ themeLabel }}</button>
+      <button type="button" onClick="{{ toggleTheme }}" aria-pressed="{{ isLight }}" aria-label="{{ themeAria }}" style="display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;cursor:pointer;white-space:nowrap;flex-shrink:0" style-hover="border-color:#ffed00"><span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:#ffed00;box-shadow:0 0 0 3px rgba(255,237,0,.25);flex-shrink:0"></span><span>{{ themeLabel }}</span></button>
       <a data-m="headercta" href="#devis" style="position:relative;display:inline-flex;align-items:center;gap:10px;min-height:42px;padding:0 18px;border-radius:999px;background:#ffed00;color:#101827;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0;overflow:hidden;box-shadow:0 0 0 0 rgba(255,237,0,.55);animation:fmPulse 2.8s ease-out infinite;transition:transform .25s cubic-bezier(.2,.75,.2,1),box-shadow .25s" style-hover="background:#fff45c;color:#101827;transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,237,0,.35)"><span aria-hidden="true" style="position:absolute;top:0;bottom:0;left:-40%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:fmShine 2.8s ease-in-out infinite"></span><span style="position:relative">Demander un devis</span> <span aria-hidden="true" style="position:relative;display:inline-block;transition:transform .25s cubic-bezier(.2,.75,.2,1)">↗</span></a>
-      <button data-m="burger" type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="{{ menuAria }}" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;cursor:pointer;flex-shrink:0;margin-left:auto"><span aria-hidden="true" style="display:flex;flex-direction:column;gap:5px"><i style="display:block;width:20px;height:2px;background:currentColor;border-radius:2px"></i><i style="display:block;width:20px;height:2px;background:currentColor;border-radius:2px"></i></span></button>
+      <button id="fm-burger-btn" data-m="burger" type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-label="{{ menuAria }}" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;cursor:pointer;flex-shrink:0;margin-left:auto"><span aria-hidden="true" style="display:flex;flex-direction:column;gap:5px"><i style="display:block;width:20px;height:2px;background:currentColor;border-radius:2px"></i><i style="display:block;width:20px;height:2px;background:currentColor;border-radius:2px"></i></span></button>
     </div>
   </header>
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-  <div data-m="menu" role="dialog" aria-label="Menu" style="position:fixed;inset:0;z-index:60;background:#020711;display:flex;flex-direction:column;padding:20px 24px 32px;overflow:auto">
+  <div id="fm-menu-panel" data-m="menu" role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;inset:0;z-index:60;background:#020711;display:flex;flex-direction:column;padding:20px 24px 32px;overflow:auto">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
       <img src="assets/freshmerch-logo.png" alt="FreshMerch" style="height:30px;width:auto">
-      <button type="button" onClick="{{ toggleMenu }}" aria-label="Fermer le menu" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font:inherit;font-size:20px;cursor:pointer">✕</button>
+      <button id="fm-menu-close-btn" type="button" onClick="{{ toggleMenu }}" aria-label="Fermer le menu" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font:inherit;font-size:20px;cursor:pointer">✕</button>
     </div>
     <nav aria-label="Navigation mobile" style="display:flex;flex-direction:column;margin:auto 0;padding:32px 0">
       <a href="#accueil" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.13);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,9vw,44px);letter-spacing:-.04em;color:#fff">Accueil<span style="font:13px 'DM Sans',sans-serif;color:#98a6bc">01</span></a>
@@ -130,7 +139,6 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
         <div style="display:flex;gap:36px;margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);flex-wrap:wrap">
           <div style="display:flex;flex-direction:column;gap:4px"><strong style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600">Design</strong><span style="font-size:11px;letter-spacing:.16em;color:#98a6bc">INCLUS DANS CHAQUE PROJET</span></div>
           <div style="display:flex;flex-direction:column;gap:4px"><strong style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600">48 h</strong><span style="font-size:11px;letter-spacing:.16em;color:#98a6bc">RÉPONSE AU DEVIS</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px"></div>
         </div>
       </div>
 
@@ -152,7 +160,7 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
   <!-- UNIVERS -->
   <section data-reveal="" id="univers" style="padding:110px 24px;background:#020711">
     <div style="max-width:1240px;margin:0 auto">
-      <div style="display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:56px">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:48px">
         <div>
           <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>01 / UNIVERS</span>
           <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 0">Un métier,<br><em style="font-style:normal;color:#ffed00">trois façons d'y entrer.</em></h2>
@@ -187,7 +195,7 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
         </a>
         <a href="studio.html" data-reveal="" style="display:flex;flex-direction:column;gap:16px;color:#fff;min-width:0" style-hover="color:#fff">
           <div style="position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:radial-gradient(circle at 50% 40%,#0d2a4e,#071225 70%)">
-            <div style="position: absolute; inset: 0; z-index: 1; background-image: linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px); background-size: 34px 34px; pointer-events: none; left: 3px; top: -19px; background: url(&quot;./chatgpt-image-21-sept-2026-03_12_05-muajvwu3-r5yg.png&quot;) center / cover no-repeat"></div><img src="assets/jersey-banner.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% center">
+            <img src="assets/jersey-banner.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% center">
             <span style="position:absolute;top:16px;left:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px;letter-spacing:.15em;color:#ffed00">03</span>
           </div>
           <div style="display:flex;flex-direction:column;gap:6px;padding:0 4px">
@@ -202,9 +210,6 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
   </section>
 
   <!-- SAVOIR-FAIRE -->
-  
-
-  <!-- CONTACT -->
   <section data-reveal="" id="savoir-faire" style="padding:110px 24px;background:#071225;border-top:1px solid rgba(255,255,255,.08)">
     <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:64px">
       <div style="position:sticky;top:110px;align-self:start">
@@ -226,10 +231,13 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
         </sc-for>
       </div>
     </div>
-  </section><section data-reveal="" id="contact" style="position:relative;overflow:hidden;background-color:#071225;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.045) 0 1px,transparent 1px 7px),repeating-linear-gradient(-45deg,rgba(255,255,255,.045) 0 1px,transparent 1px 7px),radial-gradient(ellipse at 50% 0%,rgba(47,124,255,.22),transparent 60%);border-top:1px solid rgba(255,255,255,.08)">
+  </section>
+
+  <!-- CONTACT -->
+  <section data-reveal="" id="contact" style="position:relative;overflow:hidden;background-color:#071225;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.045) 0 1px,transparent 1px 7px),repeating-linear-gradient(-45deg,rgba(255,255,255,.045) 0 1px,transparent 1px 7px),radial-gradient(ellipse at 50% 0%,rgba(47,124,255,.22),transparent 60%);border-top:1px solid rgba(255,255,255,.08)">
     <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(255,237,0,.08),transparent 55%)"></div>
     <div style="position:relative;z-index:2;max-width:760px;margin:0 auto;padding:110px 24px;display:flex;flex-direction:column;align-items:center;text-align:center">
-      <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>04 / CONTACT<i style="width:28px;height:1px;background:#ffed00"></i></span>
+      <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#98a6bc"><i style="width:28px;height:1px;background:#ffed00"></i>03 / CONTACT<i style="width:28px;height:1px;background:#ffed00"></i></span>
       <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(44px,6.5vw,92px);line-height:.9;letter-spacing:-.06em;margin:22px 0 20px;text-wrap:balance">Votre prochain<br><em style="font-style:normal;color:#ffed00">projet commence ici.</em></h2>
       <p style="color:#dbe4f7;font-size:18px;line-height:1.7;margin:0 0 36px;max-width:520px;text-wrap:pretty">Un message rapide suffit pour démarrer l'échange. Pour un devis détaillé, direction la page dédiée.</p>
       <form onSubmit="{{ submitLead }}" style="display:flex;flex-direction:column;gap:16px;width:100%;max-width:600px;text-align:left">
@@ -245,7 +253,7 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
           <textarea name="message" rows="4" required="" placeholder="Type de textile, quantité, délai souhaité…" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;resize:vertical;outline:none" style-focus="border-color:#ffed00;background:rgba(255,255,255,.14)"></textarea>
         </label>
         <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:6px">
-          <button type="submit" style="display:inline-flex;align-items:center;gap:14px;min-height:58px;padding:0 28px;border-radius:999px;border:0;background:#ffed00;color:#101827;font:inherit;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0" style-hover="background:#fff45c">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+          <button type="submit" disabled="{{ leadSending }}" style="display:inline-flex;align-items:center;gap:14px;min-height:58px;padding:0 28px;border-radius:999px;border:0;background:#ffed00;color:#101827;font:inherit;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0" style-hover="background:#fff45c">{{ leadBtnLabel }} <span aria-hidden="true">↗</span></button>
           <a href="#devis" style="display:inline-flex;align-items:center;gap:14px;min-height:58px;padding:0 28px;border-radius:999px;border:1px solid rgba(255,255,255,.3);color:#fff;font-size:14px;font-weight:700;white-space:nowrap;flex-shrink:0" style-hover="background:rgba(255,255,255,.08);color:#fff">Devis détaillé</a>
         </div>
         <p role="status" style="margin:4px 0 0;font-size:14px;min-height:20px;color:#fff5cf;text-align:center">{{ leadStatus }}</p>
@@ -257,10 +265,6 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
   </sc-if>
   <sc-if value="{{ isSport }}" hint-placeholder-val="{{ false }}">
   <div data-screen-label="Sports">
-
-  <section data-reveal="" style="position:relative;overflow:hidden;background:radial-gradient(circle at 75% 20%,rgba(47,124,255,.18),transparent 40%),linear-gradient(90deg,#020711 0%,#071225 60%,#020711 100%)">
-    
-  </section>
 
   <section data-reveal="" id="sports" style="padding:100px 24px;background:#020711">
     <div style="max-width:1240px;margin:0 auto">
@@ -277,12 +281,12 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
             <div style="position:relative;border-radius:16px;overflow:hidden;background:#071225;aspect-ratio:3/2">
               <img src="{{ sp.img }}" alt="{{ sp.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.75,.2,1)">
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:0 4px">
+            <div style="display:flex;flex-direction:column;gap:6px;padding:0 4px">
               <div style="display:flex;gap:14px;align-items:baseline;min-width:0">
                 <span style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:.15em;color:#ffed00;flex-shrink:0">{{ sp.n }}</span>
                 <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;letter-spacing:-.02em;line-height:1;text-transform:uppercase;color:#fff">{{ sp.name }}</h3>
               </div>
-              
+              <p style="margin:0;font-size:14px;color:#98a6bc;line-height:1.45">{{ sp.line }}</p>
             </div>
           </a>
         </sc-for>
@@ -338,7 +342,7 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
 
   <section data-reveal="" id="catalogue" style="padding:100px 24px;background:#f4f6f8;color:#071225">
     <div style="max-width:1240px;margin:0 auto">
-      <div style="display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:36px">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:48px">
         <div>
           <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;font-weight:700;color:#647087"><i style="width:28px;height:1px;background:#2f7cff"></i>01 / CATALOGUE</span>
           <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(40px,5.5vw,76px);line-height:.95;letter-spacing:-.05em;margin:18px 0 0">Une gamme pensée<br><em style="font-style:normal;color:#2f7cff">pour chaque usage.</em></h2>
@@ -497,11 +501,11 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
         <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
           <div role="status" style="display:flex;gap:14px;padding:20px 22px;border-radius:14px;margin-bottom:28px;background:rgba(46,160,90,.1);border:1px solid rgba(46,160,90,.35);color:#1d5f38;font-size:15px;line-height:1.6">
             <span aria-hidden="true" style="flex-shrink:0;width:30px;height:30px;border-radius:50%;background:#2ea05a;color:#fff;display:grid;place-items:center;font-weight:700">✓</span>
-            <div><strong style="display:block;font-family:'Space Grotesk',sans-serif;margin-bottom:4px">Votre messagerie s'ouvre avec la demande pré-remplie.</strong>Cliquez sur « Envoyer » et joignez vos fichiers. Rien ne s'est ouvert ? <button type="button" onClick="{{ copyRecap }}" style="border:0;background:none;padding:0;font:inherit;font-weight:700;color:#2f7cff;cursor:pointer;text-decoration:underline">Copier le récapitulatif</button> {{ copyStatus }}</div>
+            <div><strong style="display:block;font-family:'Space Grotesk',sans-serif;margin-bottom:4px">Votre demande a bien été envoyée.</strong>Nous revenons vers vous sous 48 h ouvrées. <button type="button" onClick="{{ copyRecap }}" style="border:0;background:none;padding:0;font:inherit;font-weight:700;color:#2f7cff;cursor:pointer;text-decoration:underline">Copier le récapitulatif</button> {{ copyStatus }}</div>
           </div>
         </sc-if>
         <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
-          <div role="alert" style="padding:16px 20px;border-radius:14px;margin-bottom:28px;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);color:#8a2a20;font-size:15px">{{ error }}</div>
+          <div role="alert" style="padding:16px 20px;border-radius:14px;margin-bottom:28px;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);color:#8a2a20;font-size:15px">{{ error }} <button type="button" onClick="{{ copyRecap }}" style="border:0;background:none;padding:0;font:inherit;font-weight:700;color:#8a2a20;cursor:pointer;text-decoration:underline">Copier le récapitulatif</button> {{ copyStatus }}</div>
         </sc-if>
 
         <fieldset id="fs-1" style="border:0;margin:0;padding:0 0 34px;display:flex;flex-direction:column;gap:16px">
@@ -520,7 +524,7 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;clear:both">
             <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Type de projet <b style="color:#c0392b">*</b></span><select name="type_de_projet" required="" defaultValue="{{ defaultType }}" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"><option value="">Sélectionnez…</option><option>Textile personnalisé (t-shirts, sweats, polos…)</option><option>Sport &amp; sublimation (maillots, tenues d'équipe)</option><option>Événementiel</option><option>Autre / je ne sais pas encore</option></select></label>
             <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Produit(s) recherché(s) <b style="color:#c0392b">*</b></span><input name="produit" required="" defaultValue="{{ defaultProduct }}" placeholder="ex : maillots de football, sweats zippés…" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"></label>
-            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Quantité estimée</span><input name="quantite" placeholder="ex : 25 pièces" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Quantité estimée</span><input name="quantite" inputMode="numeric" placeholder="ex : 25 pièces" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"></label>
             <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Délai souhaité</span><select name="delai_souhaite" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none" style-focus="border-color:#2f7cff"><option value="">Sélectionnez…</option><option>Moins de 2 semaines</option><option>2 à 4 semaines</option><option>1 à 2 mois</option><option>Pas de contrainte particulière</option></select></label>
           </div>
           <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#3c4a63"><span>Décrivez votre projet <b style="color:#c0392b">*</b></span><textarea name="description" rows="5" required="" placeholder="Couleurs, logo, noms et numéros, technique souhaitée, contraintes…" style="font:inherit;font-size:16px;letter-spacing:0;text-transform:none;padding:14px 16px;border-radius:12px;border:1px solid rgba(8,18,37,.15);background:#fff;color:#071225;outline:none;resize:vertical" style-focus="border-color:#2f7cff"></textarea></label>
@@ -533,8 +537,8 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
             <span style="display:block;margin-top:6px;font-size:13px;color:#647087">{{ filesLabel }}</span>
             <input name="fichiers" type="file" multiple="" accept=".pdf,.png,.jpg,.jpeg,.svg,.zip" onChange="{{ onFiles }}" style="display:none">
           </label>
-          <label style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#3c4a63"><input name="consentement" type="checkbox" required="" style="width:18px;height:18px;margin-top:3px;flex-shrink:0">J'accepte d'être recontacté(e) par FreshMerch au sujet de ma demande. <b style="color:#c0392b">*</b></label>
-          <button type="submit" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;min-height:58px;padding:0 28px;border-radius:999px;border:0;background:#ffed00;color:#101827;font:inherit;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;white-space:nowrap;flex-shrink:0" style-hover="background:#fff45c">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+          <label style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#3c4a63"><input name="consentement" type="checkbox" required="" style="width:22px;height:22px;margin-top:0;flex-shrink:0">J'accepte d'être recontacté(e) par FreshMerch au sujet de ma demande. <b style="color:#c0392b">*</b></label>
+          <button type="submit" disabled="{{ sending }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;min-height:58px;padding:0 28px;border-radius:999px;border:0;background:#ffed00;color:#101827;font:inherit;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;white-space:nowrap;flex-shrink:0" style-hover="background:#fff45c">{{ submitBtnLabel }} <span aria-hidden="true">↗</span></button>
         </fieldset>
       </form>
         <p style="margin:0;font-size:13px;color:#647087;line-height:1.6">Les champs marqués <b style="color:#c0392b">*</b> sont obligatoires. Vous préférez écrire directement ? <a href="mailto:jules.frescaline@gmail.com" style="color:#2f7cff;font-weight:700">jules.frescaline@gmail.com</a></p>
@@ -561,7 +565,7 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:30px;flex:1;max-width:680px;min-width:0">
           <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#98a6bc"><span style="font-size:11px;letter-spacing:.18em;margin-bottom:6px">EXPLORER</span><a href="#sport">Sports</a><a href="#textile">Textile</a><a href="studio.html">Studio 3D</a></div>
-          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#98a6bc"><span style="font-size:11px;letter-spacing:.18em;margin-bottom:6px">PROJET</span><a href="#a-propos">À propos</a></div><div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#98a6bc"><span style="font-size:11px;letter-spacing:.18em;margin-bottom:6px">CONTACT</span><a href="mailto:jules.frescaline@gmail.com" style="overflow-wrap:anywhere;min-width:0">jules.frescaline@gmail.com</a><a href="#devis">Demander un devis</a><a href="https://www.instagram.com/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; width: 207px; height: 47px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg><span style="min-width:0">Visiter notre page Insta</span></a></div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#98a6bc"><span style="font-size:11px;letter-spacing:.18em;margin-bottom:6px">PROJET</span><a href="#a-propos">À propos</a></div><div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#98a6bc"><span style="font-size:11px;letter-spacing:.18em;margin-bottom:6px">CONTACT</span><a href="mailto:jules.frescaline@gmail.com" style="overflow-wrap:anywhere;min-width:0">jules.frescaline@gmail.com</a><a href="#devis">Demander un devis</a><a href="https://www.instagram.com/jules_frsc/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; width: 207px; height: 47px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg><span style="min-width:0">Visiter notre page Insta</span></a></div>
           
         </div>
       </div>
@@ -574,7 +578,7 @@ html[data-theme="light"] #top img[src*="jersey-cutout"],html[data-theme="light"]
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"showMarquee":{"editor":"boolean","default":true,"tsType":"boolean","section":"Accueil"}}'>
 class Component extends DCLogic {
-  state = { route: "accueil", query: {}, menuOpen: false, videoIntro: true, slide: 0, leadStatus: "", cat: "", sent: false, error: "", files: [], recap: "", copyStatus: "" };
+  state = { route: "accueil", query: {}, menuOpen: false, videoIntro: true, slide: 0, leadStatus: "", leadSending: false, cat: "", sent: false, sending: false, error: "", files: [], recap: "", copyStatus: "" };
   routes = ["accueil", "sport", "textile", "a-propos", "devis"];
   lastRoute = "accueil";
   theme = (() => { try { return localStorage.getItem("freshmerch-theme") === "light" ? "light" : "dark"; } catch (e) { return "dark"; } })();
@@ -593,14 +597,19 @@ class Component extends DCLogic {
       if (!r) return; // ancre interne (#catalogue…) : on laisse le navigateur défiler
       if (r.route !== this.state.route) window.scrollTo(0, 0);
       document.body.style.overflow = "";
+      this.setBgInert(false);
       this.setState({ ...r, sent: false, error: "", menuOpen: false });
     };
     window.addEventListener("hashchange", this.onHash);
+    this.onKeydown = (e) => { if (e.key === "Escape" && this.state.menuOpen) this.closeMenu(); };
+    window.addEventListener("keydown", this.onKeydown);
     this.applyTheme();
     this.slideTimer = setInterval(() => this.setState(s => ({ slide: (s.slide + 1) % 6 })), 3200);
     this.reveal();
   }
-  componentWillUnmount() { window.removeEventListener("hashchange", this.onHash); clearInterval(this.slideTimer); }
+  componentWillUnmount() { window.removeEventListener("hashchange", this.onHash); window.removeEventListener("keydown", this.onKeydown); clearInterval(this.slideTimer); }
+  setBgInert(v) { const top = document.getElementById("top"); if (!top) return; Array.from(top.children).forEach(el => { if (el.id !== "fm-menu-panel") el.inert = v; }); }
+  closeMenu() { document.body.style.overflow = ""; this.setBgInert(false); this.setState({ menuOpen: false }); setTimeout(() => { const b = document.getElementById("fm-burger-btn"); if (b) b.focus(); }, 20); }
   componentDidUpdate() { if (this.state.route !== this.lastRoute) { this.lastRoute = this.state.route; setTimeout(() => this.reveal(), 30); } }
   renderVals() {
     const { route, query } = this.state;
@@ -633,8 +642,14 @@ class Component extends DCLogic {
       year: new Date().getFullYear(),
       isLight: this.theme === "light", themeLabel: this.theme === "light" ? "Mode sombre" : "Mode clair", themeAria: this.theme === "light" ? "Activer le mode sombre" : "Activer le mode clair",
       menuOpen: this.state.menuOpen, menuAria: this.state.menuOpen ? "Fermer le menu" : "Ouvrir le menu",
-      toggleMenu: () => this.setState(s => { document.body.style.overflow = s.menuOpen ? "" : "hidden"; return { menuOpen: !s.menuOpen }; }),
-      closeMenu: () => { document.body.style.overflow = ""; this.setState({ menuOpen: false }); },
+      toggleMenu: () => this.setState(s => {
+        const opening = !s.menuOpen;
+        document.body.style.overflow = opening ? "hidden" : "";
+        this.setBgInert(opening);
+        setTimeout(() => { const el = document.getElementById(opening ? "fm-menu-close-btn" : "fm-burger-btn"); if (el) el.focus(); }, 20);
+        return { menuOpen: opening };
+      }),
+      closeMenu: () => this.closeMenu(),
       showIntro: this.state.videoIntro,
       skipIntro: () => this.setState({ videoIntro: false }),
       toggleTheme: () => { this.theme = this.theme === "light" ? "dark" : "light"; this.applyTheme(); this.forceUpdate(); },
@@ -664,12 +679,20 @@ class Component extends DCLogic {
         { n: "05", title: "Contrôle qualité", text: "Un regard sur chaque détail avant que le textile arrive sur le terrain." }
       ],
       leadStatus: this.state.leadStatus,
+      leadSending: this.state.leadSending,
+      leadBtnLabel: this.state.leadSending ? "Envoi…" : "Envoyer ma demande",
       submitLead: (e) => {
         e.preventDefault();
-        const f = new FormData(e.target);
-        const body = `Nom : ${f.get("name")}\nEmail : ${f.get("email")}\n\nProjet :\n${f.get("message")}`;
-        window.location.href = `mailto:jules.frescaline@gmail.com?subject=${encodeURIComponent("Nouveau projet FreshMerch")}&body=${encodeURIComponent(body)}`;
-        this.setState({ leadStatus: "Votre messagerie s'ouvre avec la demande pré-remplie." });
+        if (this.state.leadSending) return;
+        const form = e.target;
+        const f = new FormData(form);
+        f.append("_subject", "Nouveau message FreshMerch — " + f.get("name"));
+        f.append("_captcha", "false");
+        f.append("_template", "table");
+        this.setState({ leadSending: true, leadStatus: "Envoi en cours…" });
+        fetch("https://formsubmit.co/ajax/jules.frescaline@gmail.com", { method: "POST", body: f, headers: { Accept: "application/json" } })
+          .then((r) => { if (!r.ok) throw new Error(); form.reset(); this.setState({ leadSending: false, leadStatus: "Message envoyé — nous revenons vers vous rapidement." }); })
+          .catch(() => this.setState({ leadSending: false, leadStatus: "Échec de l'envoi. Réessayez, ou écrivez-nous directement à jules.frescaline@gmail.com." }));
       },
       // Sport
       sports: sportsData.map(([name, file], i) => ({ n: String(i + 1).padStart(2, "0"), name, lower: name.toLowerCase(), line: lines[name], img: `assets/sports-photos/${file}.jpg`, alt: `Visuel FreshMerch ${name.toLowerCase()}`, href: q(name), span: "auto" })),
@@ -703,20 +726,27 @@ class Component extends DCLogic {
       defaultProduct: sport ? `Maillots ${sport}` : "",
       stepsNav: [["1","Vous"],["2","Projet"],["3","Envoi"]].map(([n,label]) => ({ n, label, href: `#fs-${n}` })),
       sent: this.state.sent, hasError: !!this.state.error, error: this.state.error, copyStatus: this.state.copyStatus,
+      sending: this.state.sending, submitBtnLabel: this.state.sending ? "Envoi…" : "Envoyer ma demande",
       filesLabel: this.state.files.length ? this.state.files.join(", ") : "PDF, PNG, JPG, SVG, ZIP — 10 Mo max par fichier",
       onFiles: (e) => this.setState({ files: Array.from(e.target.files).map(f => f.name) }),
       copyRecap: async () => { try { await navigator.clipboard.writeText(this.state.recap); this.setState({ copyStatus: "Copié !" }); } catch { this.setState({ copyStatus: "Copie impossible — sélectionnez le texte manuellement." }); } },
       submit: (e) => {
         e.preventDefault();
+        if (this.state.sending) return;
         const form = e.target;
         const missing = Array.from(form.querySelectorAll("[required]")).filter(el => el.type === "checkbox" ? !el.checked : !el.value.trim());
         if (missing.length) { this.setState({ error: "Merci de compléter les champs obligatoires (*) avant d'envoyer.", sent: false }); missing[0].focus(); return; }
         const f = new FormData(form);
         const linesOut = fields.map(([k, l]) => f.get(k) ? `${l} : ${f.get(k)}` : null).filter(Boolean);
-        if (this.state.files.length) linesOut.push(`\nFichiers à joindre : ${this.state.files.join(", ")}`);
+        if (this.state.files.length) linesOut.push(`\nFichiers joints : ${this.state.files.join(", ")}`);
         const recap = linesOut.join("\n");
-        window.location.href = `mailto:jules.frescaline@gmail.com?subject=${encodeURIComponent("Demande de devis FreshMerch — " + f.get("prenom") + " " + f.get("nom"))}&body=${encodeURIComponent(recap)}`;
-        this.setState({ sent: true, error: "", recap });
+        f.append("_subject", "Demande de devis FreshMerch — " + f.get("prenom") + " " + f.get("nom"));
+        f.append("_captcha", "false");
+        f.append("_template", "table");
+        this.setState({ sending: true, error: "", recap });
+        fetch("https://formsubmit.co/ajax/jules.frescaline@gmail.com", { method: "POST", body: f, headers: { Accept: "application/json" } })
+          .then((r) => { if (!r.ok) throw new Error(); this.setState({ sending: false, sent: true, error: "" }); })
+          .catch(() => this.setState({ sending: false, sent: false, error: "Échec de l'envoi de votre demande. Réessayez, ou copiez le récapitulatif ci-dessous et écrivez-nous directement à jules.frescaline@gmail.com." }));
       }
     };
   }
